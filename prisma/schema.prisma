@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String
+  email     String   @unique
+  password  String
+  isDeleted Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  BBS       BBS[]
+  SWA       SWA[]
+}
+
+model BBS {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  location  String
+  rig       String
+  when      String
+  find      String
+  reasong   String
+  suggest   String
+  userId    Int
+  answareId Int
+
+  user    User       @relation(fields: [userId], references: [id])
+  answare AnswareBBS @relation(fields: [answareId], references: [id])
+}
+
+model SWA {
+  id            Int      @id @default(autoincrement())
+  date          DateTime
+  location      String
+  reaason       String
+  solution      String
+  desc          String
+  feedbackId    Int
+  userId        Int
+  implementorId Int
+  perpetratorId Int
+
+  feedback    FeedbackSWA @relation(fields: [feedbackId], references: [id])
+  user        User        @relation(fields: [userId], references: [id])
+  implementor Implementor @relation(fields: [implementorId], references: [id])
+  perpetrator Perpetrator @relation(fields: [perpetratorId], references: [id])
+}
+
+model AnswareBBS {
+  id  Int     @id @default(autoincrement())
+  q1  Boolean
+  q2  Boolean
+  q3  Boolean
+  q4  Boolean
+  q5  Boolean
+  q6  Boolean
+  q7  Boolean
+  q8  Boolean
+  q9  Boolean
+  q10 Boolean
+  q11 Boolean
+  q12 Boolean
+  q13 Boolean
+  q14 Boolean
+  q15 Boolean
+  q16 Boolean
+  q17 Boolean
+  q18 Boolean
+  q19 Boolean
+  q20 Boolean
+  q21 Boolean
+  q22 Boolean
+  q23 Boolean
+  q24 Boolean
+  q25 Boolean
+  BBS BBS[]
+}
+
+model FeedbackSWA {
+  id  Int     @id @default(autoincrement())
+  q1  Boolean
+  q2  Boolean
+  q3  Boolean
+  q4  Boolean
+  q5  Boolean
+  SWA SWA[]
+}
+
+model Implementor {
+  id       Int    @id @default(autoincrement())
+  name     String
+  team     String
+  company  String
+  badge    String
+  position String
+  SWA      SWA[]
+}
+
+model Perpetrator {
+  id       Int    @id @default(autoincrement())
+  name     String
+  team     String
+  company  String
+  badge    String
+  position String
+  SWA      SWA[]
+}
