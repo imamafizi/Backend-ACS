@@ -14,6 +14,9 @@ model User {
   id        Int      @id @default(autoincrement())
   username  String
   email     String   @unique
+  badge     String
+  jabatan   String
+  company   String
   password  String
   isDeleted Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -23,77 +26,85 @@ model User {
 }
 
 model BBS {
-  id        Int      @id @default(autoincrement())
-  date      DateTime
-  location  String
-  rig       String
-  when      String
-  find      String
-  reasong   String
-  suggest   String
-  userId    Int
-  answareId Int
+  id       Int      @id @default(autoincrement())
+  date     DateTime
+  location String
+  rig      String
+  q11      Boolean
+  q12      Boolean
+  q13      Boolean
+  q14      Boolean
+  q15      Boolean
+  q21      Boolean
+  q22      Boolean
+  q23      Boolean
+  q24      Boolean
+  q31      Boolean
+  q32      Boolean
+  q41      Boolean
+  q42      Boolean
+  q43      Boolean
+  q44      Boolean
+  q45      Boolean
+  q47      Boolean
+  q51      Boolean
+  q52      Boolean
+  q53      Boolean
+  q61      Boolean
+  q62      Boolean
+  q63      Boolean
+  q64      Boolean
+  q65      Boolean
+  q66      Boolean
+  q67      Boolean
+  q68      Boolean
+  q71      Boolean
+  q72      Boolean
+  q73      Boolean
+  q81      Boolean
+  q82      Boolean
+  q83      Boolean
+  q84      Boolean
+  q85      Boolean
+  q86      Boolean
+  q87      Boolean
+  q88      Boolean
+  q91      Boolean
+  q92      Boolean
+  q93      Boolean
+  q94      Boolean
+  q95      Boolean
+  q96      Boolean
+  q97      Boolean
+  q98      Boolean
+  when     String
+  find     String
+  reason   String
+  suggest  String
+  userId   Int
 
-  user    User       @relation(fields: [userId], references: [id])
-  answare AnswareBBS @relation(fields: [answareId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 }
 
 model SWA {
   id            Int      @id @default(autoincrement())
   date          DateTime
   location      String
-  reaason       String
-  solution      String
+  reason        String
+  response      String
   desc          String
-  feedbackId    Int
+  q1            Boolean
+  q2            Boolean
+  q3            Boolean
+  q4            Boolean
+  q5            Boolean
   userId        Int
   implementorId Int
   perpetratorId Int
 
-  feedback    FeedbackSWA @relation(fields: [feedbackId], references: [id])
   user        User        @relation(fields: [userId], references: [id])
   implementor Implementor @relation(fields: [implementorId], references: [id])
   perpetrator Perpetrator @relation(fields: [perpetratorId], references: [id])
-}
-
-model AnswareBBS {
-  id  Int     @id @default(autoincrement())
-  q1  Boolean
-  q2  Boolean
-  q3  Boolean
-  q4  Boolean
-  q5  Boolean
-  q6  Boolean
-  q7  Boolean
-  q8  Boolean
-  q9  Boolean
-  q10 Boolean
-  q11 Boolean
-  q12 Boolean
-  q13 Boolean
-  q14 Boolean
-  q15 Boolean
-  q16 Boolean
-  q17 Boolean
-  q18 Boolean
-  q19 Boolean
-  q20 Boolean
-  q21 Boolean
-  q22 Boolean
-  q23 Boolean
-  q24 Boolean
-  q25 Boolean
-  BBS BBS[]
-}
-
-model FeedbackSWA {
-  id  Int     @id @default(autoincrement())
-  q1  Boolean
-  q2  Boolean
-  q3  Boolean
-  q4  Boolean
-  q5  Boolean
-  SWA SWA[]
 }
 
 model Implementor {

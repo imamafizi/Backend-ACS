@@ -2,14 +2,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const getAllBBSRepo = async () => {
+export const getSWAByIdRepo = async (id: number) => {
   try {
-    const bbs = await prisma.bBS.findMany({
-      include: {
-        user: true,
-      },
+    const swa = await prisma.sWA.findUnique({
+      where: { id },
     });
-    return bbs;
+    return swa;
   } catch (error) {
     console.log(error);
     throw error;

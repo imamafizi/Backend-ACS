@@ -7,7 +7,6 @@ export const getAllSWARepo = async () => {
     const swa = await prisma.sWA.findMany({
       include: {
         user: true,
-        feedback: true,
         implementor: true,
         perpetrator: true,
       },

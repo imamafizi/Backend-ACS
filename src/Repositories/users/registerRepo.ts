@@ -5,11 +5,14 @@ const prisma = new PrismaClient();
 
 export const registerRepo = async (body: IUser) => {
   try {
-    const { username, email, password } = body;
+    const { username, email, password, badge, jabatan, company } = body;
     const register = await prisma.user.create({
       data: {
         username,
         email,
+        badge,
+        jabatan,
+        company,
         password,
       },
     });
