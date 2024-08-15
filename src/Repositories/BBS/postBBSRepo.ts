@@ -8,6 +8,7 @@ export const postBBSRepo = async (body: any, userId: number) => {
       date,
       location,
       rig,
+      where,
       q11,
       q12,
       q13,
@@ -59,6 +60,10 @@ export const postBBSRepo = async (body: any, userId: number) => {
       find,
       reason,
       suggest,
+      p1,
+      p2,
+      p3,
+      p4,
     } = body;
 
     const bbs = await prisma.bBS.create({
@@ -66,6 +71,7 @@ export const postBBSRepo = async (body: any, userId: number) => {
         date,
         location,
         rig,
+        where,
         q11,
         q12,
         q13,
@@ -117,6 +123,10 @@ export const postBBSRepo = async (body: any, userId: number) => {
         find,
         reason,
         suggest,
+        p1,
+        p2,
+        p3,
+        p4,
         userId,
       },
     });

@@ -31,53 +31,53 @@ model BBS {
   location  String
   rig       String
   where     String
-  q11       Boolean
-  q12       Boolean
-  q13       Boolean
-  q14       Boolean
-  q15       Boolean
-  q21       Boolean
-  q22       Boolean
-  q23       Boolean
-  q24       Boolean
-  q31       Boolean
-  q32       Boolean
-  q41       Boolean
-  q42       Boolean
-  q43       Boolean
-  q44       Boolean
-  q45       Boolean
-  q47       Boolean
-  q51       Boolean
-  q52       Boolean
-  q53       Boolean
-  q61       Boolean
-  q62       Boolean
-  q63       Boolean
-  q64       Boolean
-  q65       Boolean
-  q66       Boolean
-  q67       Boolean
-  q68       Boolean
-  q71       Boolean
-  q72       Boolean
-  q73       Boolean
-  q81       Boolean
-  q82       Boolean
-  q83       Boolean
-  q84       Boolean
-  q85       Boolean
-  q86       Boolean
-  q87       Boolean
-  q88       Boolean
-  q91       Boolean
-  q92       Boolean
-  q93       Boolean
-  q94       Boolean
-  q95       Boolean
-  q96       Boolean
-  q97       Boolean
-  q98       Boolean
+  q11       Boolean  @default(true)
+  q12       Boolean  @default(true)
+  q13       Boolean  @default(true)
+  q14       Boolean  @default(true)
+  q15       Boolean  @default(true)
+  q21       Boolean  @default(true)
+  q22       Boolean  @default(true)
+  q23       Boolean  @default(true)
+  q24       Boolean  @default(true)
+  q31       Boolean  @default(true)
+  q32       Boolean  @default(true)
+  q41       Boolean  @default(true)
+  q42       Boolean  @default(true)
+  q43       Boolean  @default(true)
+  q44       Boolean  @default(true)
+  q45       Boolean  @default(true)
+  q47       Boolean  @default(true)
+  q51       Boolean  @default(true)
+  q52       Boolean  @default(true)
+  q53       Boolean  @default(true)
+  q61       Boolean  @default(true)
+  q62       Boolean  @default(true)
+  q63       Boolean  @default(true)
+  q64       Boolean  @default(true)
+  q65       Boolean  @default(true)
+  q66       Boolean  @default(true)
+  q67       Boolean  @default(true)
+  q68       Boolean  @default(true)
+  q71       Boolean  @default(true)
+  q72       Boolean  @default(true)
+  q73       Boolean  @default(true)
+  q81       Boolean  @default(true)
+  q82       Boolean  @default(true)
+  q83       Boolean  @default(true)
+  q84       Boolean  @default(true)
+  q85       Boolean  @default(true)
+  q86       Boolean  @default(true)
+  q87       Boolean  @default(true)
+  q88       Boolean  @default(true)
+  q91       Boolean  @default(true)
+  q92       Boolean  @default(true)
+  q93       Boolean  @default(true)
+  q94       Boolean  @default(true)
+  q95       Boolean  @default(true)
+  q96       Boolean  @default(true)
+  q97       Boolean  @default(true)
+  q98       Boolean  @default(true)
   when      String
   find      String
   reason    String
