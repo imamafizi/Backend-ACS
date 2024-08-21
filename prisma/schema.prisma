@@ -94,42 +94,30 @@ model BBS {
 }
 
 model SWA {
-  id            Int      @id @default(autoincrement())
-  date          DateTime
-  location      String
-  reason        String
-  response      String
-  desc          String
-  q1            Boolean
-  q2            Boolean
-  q3            Boolean
-  q4            Boolean
-  q5            Boolean
-  userId        Int
-  implementorId Int
-  perpetratorId Int
+  id                  Int      @id @default(autoincrement())
+  nameImplementor     String
+  teamImplementor     String
+  companyImplementor  String
+  badgeImplementor    String
+  positionImplementor String
+  namePerpetrator     String
+  teamPerpetrator     String
+  companyPerpetrator  String
+  badgePerpetrator    String
+  positionPerpetrator String
+  date                DateTime
+  location            String
+  reason              String
+  response            String
+  desc                String
+  q1                  Boolean
+  q2                  Boolean
+  q3                  Boolean
+  q4                  Boolean
+  q5                  Boolean
+  userId              Int
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
-  user        User        @relation(fields: [userId], references: [id])
-  implementor Implementor @relation(fields: [implementorId], references: [id])
-  perpetrator Perpetrator @relation(fields: [perpetratorId], references: [id])
-}
-
-model Implementor {
-  id       Int    @id @default(autoincrement())
-  name     String
-  team     String
-  company  String
-  badge    String
-  position String
-  SWA      SWA[]
-}
-
-model Perpetrator {
-  id       Int    @id @default(autoincrement())
-  name     String
-  team     String
-  company  String
-  badge    String
-  position String
-  SWA      SWA[]
+  user User @relation(fields: [userId], references: [id])
 }
