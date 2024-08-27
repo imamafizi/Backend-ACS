@@ -34,14 +34,47 @@ export const getBBSByIdController = async (
     const worksheet = workbook.addWorksheet("BBS Record");
 
     // Add columns and rows
+
     worksheet.columns = [
       { header: "Field", key: "field", width: 30 },
       { header: "Value", key: "value", width: 50 },
     ];
 
+    // Style the header row
+    worksheet.getRow(1).font = { bold: true, color: { argb: "FFFFFF" } };
+    worksheet.getRow(1).fill = {
+      type: "pattern",
+      pattern: "solid",
+      fgColor: { argb: "4F81BD" },
+    };
+    worksheet.getRow(1).alignment = { horizontal: "center" };
+
     // Add the data to the Excel file
     Object.entries(bbsRecord).forEach(([key, value]) => {
       worksheet.addRow({ field: key, value: value });
+    });
+
+    // Set borders
+    worksheet.eachRow((row) => {
+      row.eachCell((cell) => {
+        cell.border = {
+          top: { style: "thin", color: { argb: "000000" } },
+          left: { style: "thin", color: { argb: "000000" } },
+          bottom: { style: "thin", color: { argb: "000000" } },
+          right: { style: "thin", color: { argb: "000000" } },
+        };
+      });
+    });
+
+    // Set column widths
+    worksheet.getColumn("field").width = 30;
+    worksheet.getColumn("value").width = 50;
+
+    // Wrap text
+    worksheet.eachRow((row) => {
+      row.eachCell((cell) => {
+        cell.alignment = { wrapText: true };
+      });
     });
 
     // Write to buffer
