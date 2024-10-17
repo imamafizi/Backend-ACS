@@ -7,7 +7,7 @@ export const keepLoginController = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.body.user;
+    const { id } = res.locals.user;
 
     const result = await keepLoginAction(Number(id));
     res.status(result.status).send(result);

@@ -3,10 +3,6 @@ import jwt, { TokenExpiredError } from "jsonwebtoken";
 
 const secretKey = process.env.JWT_SECRET_KEY!;
 
-interface PayloadToken {
-  id: number;
-}
-
 export const verifyToken = (
   req: Request,
   res: Response,
@@ -16,19 +12,24 @@ export const verifyToken = (
 
   if (!token) {
     return res.status(401).send({
-      message: "Authorization failed, token is missing",
+      message: "Token is missing",
     });
   }
+
   jwt.verify(token, secretKey, (err, payload) => {
     if (err) {
       if (err instanceof TokenExpiredError) {
-        return res.status(403).send({ message: "Token expired" });
+        return res.status(403).send({
+          message: "Token expired",
+        });
       } else {
-        return res.status(403).send({ message: "Invalid token" });
+        return res.status(403).send({
+          message: "Invalid Token",
+        });
       }
     }
 
-    req.body.user = payload as PayloadToken;
+    res.locals.user = payload;
 
     next();
   });
